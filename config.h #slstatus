@@ -65,12 +65,12 @@ static const char unknown_str[] = "n/a";
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  */
 static const struct arg args[] = {
-	/* function       format          argument */
-        {ram_used,        "RAM: %s | ",     "NULL"},
-        {temp,            "TEMP: %sC |",     "/sys/class/thermal/thermal_zone0/temp"},
-        {wifi_essid,      " WIFI:%s | ",    "wlp0s20f3"},
-        { vol_perc,       "VOL: %s%% | ",      "Master"},
-        { datetime,       "%s",             "%F %T"},
+	/* function          format          argument */
+        { run_command,   "GFAN:%s ",     "cat /sys/class/hwmon/hwmon8/fan1_input" },
+	    { temp,          "CPUT:%s ",     "/sys/class/hwmon/hwmon6/temp1_input" },
+	    { temp,          "GPUT:%s ",     "/sys/class/hwmon/hwmon8/temp1_input" },
+	    { run_command,   "VOL:%s ",      "pamixer --get-volume-human" },
+        { datetime,      "%s",           "%F %T"},
 
 
 
